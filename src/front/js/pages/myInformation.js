@@ -39,8 +39,8 @@ export const MyInformation = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row containerProfile">
-        <div className="col-md-5">
-          <div className="card cardDatos border-0">
+        <div className="col-md-6">
+          <div className="card cardDatos border-0 m-3">
             <div className="d-flex overflow-profile justify-content-center containerFoto border-0">
               <img
                 className="card-img-top card-img-top-profile cardImage"
@@ -51,16 +51,18 @@ export const MyInformation = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-7  row">
-          <div className="row">
-            <h1 className="col-9 fs-4">Mi información del Perfil</h1>
-            <div className="col-3">
+        <div className="col-md-6  row">
+          <div className="row w-100">
+            <h3 className="col-10 fs-4 text-dark mb-1">
+              Mi información del Perfil
+            </h3>
+            <div className="col-1">
               {isEditing ? (
                 <></>
               ) : (
                 <button
                   type="button"
-                  class=" btn btn-dark btn-sm buttonPerfil"
+                  class=" btn btn-dark btn-md buttonPerfil k mb-5"
                   onClick={handleEditClick}
                 >
                   Editar
@@ -80,7 +82,7 @@ export const MyInformation = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control m-0 p-0 ps-3 inputProfile bg-white fs-6 rounded-end-pill text-black"
+                    className="m-0 p-0 ps-3 inputProfile2  bg-white fs-6 text-black"
                     id="name"
                     name="name"
                     value={editedProfile.name}
@@ -96,7 +98,7 @@ export const MyInformation = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control m-0 p-0 ps-3 inputProfile bg-white fs-6 rounded-end-pill text-black"
+                    className="fm-0 p-0 ps-3 inputProfile2 bg-white fs-6 rounded-end-pill text-black"
                     id="lastname"
                     name="lastname"
                     value={editedProfile.lastname}
@@ -112,7 +114,7 @@ export const MyInformation = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control m-0 p-0 ps-3 inputProfile bg-white fs-6 rounded-end-pill text-black"
+                    className="m-0 p-0 ps-3 inputProfile2 bg-white fs-6 rounded-end-pill text-black"
                     id="email"
                     name="email"
                     value={editedProfile.email}
@@ -128,28 +130,31 @@ export const MyInformation = () => {
                   </label>
                   <input
                     type="text"
-                    className="form-control m-0 p-0 ps-3 inputProfile bg-white fs-6 rounded-end-pill text-black"
+                    className=" m-0 p-0 ps-3 inputProfile2 bg-white fs-6 rounded-end-pill text-black"
                     id="region"
                     name="region"
                     value={editedProfile.region}
                     onChange={handleInputChange}
                   />
                 </div>
+                <button
+                  className="buttonEdition btn btn-dark m-1 me-2"
+                  onClick={handleSaveClick}
+                >
+                  Guardar
+                </button>
+                <button
+                  className="buttonEdition btn btn-dark m-1"
+                  onClick={handleCancelClick}
+                >
+                  Cancelar
+                </button>
               </form>
-              <button className="btn btn-success" onClick={handleSaveClick}>
-                Guardar
-              </button>
-              <button
-                className="btn btn-secondary mx-2"
-                onClick={handleCancelClick}
-              >
-                Cancelar
-              </button>
             </div>
           ) : (
             <div className="container">
               <div className=" container d-flex align-items-center m-0 p-0 mb-2 text-center justify-content-center  ">
-                <p className="editProfile rounded-start-pill pt-2 text-black fs-6">
+                <p className="editProfile rounded-start-pill pt-2 fs-6">
                   Nombre
                 </p>
                 <p className="inputProfile bg-white fs-6 pt-2 rounded-end-pill text-black ">

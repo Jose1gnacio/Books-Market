@@ -68,7 +68,6 @@ export const MyBuyDetails = () => {
             >
               {store.myChat.map((message, index) => (
                 <div className="d-flex flex-column" key={index}>
-                  console.log(store.myChat)
                   {message.sender_id === store.currentUser.user.id ? (
                     <div className="align-self-start text-primary m-2">
                       <p>
@@ -117,7 +116,7 @@ export const MyBuyDetails = () => {
                   onChange={actions.inputTextArea}
                 />
               </div>
-              <button type="submit" className="btn btn-sm btn-dark mb-3 mt-0 ">
+              <button type="" className="btn btn-sm btn-success mb-3 mt-0 ">
                 Enviar
               </button>
             </form>

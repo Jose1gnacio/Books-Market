@@ -2,6 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 
+import decimal
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Gallery, Comentario, Book,  Mensaje, Purchase
 from api.utils import generate_sitemap, APIException
@@ -227,63 +228,32 @@ def get_comentarios():
 @jwt_required() #solo usuario logeado publica
 def register_Book():
 
-    title= None
-    author= None
-    cathegory= None
-    number_of_pages= None
-    description= None
-    type= None
-    price= None
-    photo= None
-    available= True 
+    title = request.form.get("title")
+    author = request.form.get("author")
+    cathegory = request.form.get("cathegory")
+    number_of_pages = request.form.get("number_of_pages")
+    description = request.form.get("description")
+    type = request.form.get("type")
+    price = request.form.get("price")
+    photo = request.files.get("photo")
+    available = True 
     user_id = get_jwt_identity() 
 
+    ### VALIDANDO DATOS
+    if not title or not author or not cathegory or not number_of_pages or not description or not type or not photo:
+        return jsonify({"error": "Todos los campos son requeridos"}), 400
 
-### VALIDANDO DATOS
-    if 'title' in request.form:
-        title =request.form["title"]
-    else:
-        return jsonify({"error": "Title is required"}), 400
+    # Si el campo 'price' se proporciona en el formulario, intenta obtener su valor
+    if price:
+        try:
+            # Intenta convertir el valor de 'price' a un número decimal
+            price = decimal.Decimal(price)
+        except ValueError:
+            return jsonify({"error": "Formato de preicio invalido"}), 400
 
-    if 'author' in request.form:
-        author =request.form["author"]
-    else:
-        return jsonify({"error": "Author is required"}), 400  
-
-    if 'cathegory' in request.form:
-        cathegory =request.form["cathegory"]
-    else:
-        return jsonify({"error": "Cathegory is required"}), 400  
-
-    if 'number_of_pages' in request.form:
-        number_of_pages =request.form["number_of_pages"]
-    else:
-        return jsonify({"error": "Number_of_pages is required"}), 400  
-
-    if 'description' in request.form:
-        description =request.form["description"]
-    else:
-        return jsonify({"error": "Description is required"}), 400  
-
-    if 'type' in request.form:
-        type =request.form["type"]
-    else:
-        return jsonify({"error": "Type is required"}), 400  
-
-    if 'price' in request.form:
-        price =request.form["price"]
-    else:
-        return jsonify({"error": "Price is required"}), 400    
-
-    if 'photo' in request.files:
-        photo =request.files["photo"]
-    else:
-        return jsonify({"error": "Photo is required"}), 400  
-    
     response = upload(photo, folder="market_image")
-    
-      
- ## CREACION LIBRO         
+
+    ## CREACION LIBRO         
     if response:
         book = Book()
         book.title = title
@@ -292,14 +262,55 @@ def register_Book():
         book.number_of_pages = number_of_pages
         book.description = description
         book.type = type
-        book.price = price
-        book.photo = response['secure_url'] # Forma de creación con archivo
-        book.user_id = user_id  # Asociar el libro con el usuario actual
-        book.available = True # Se establece inicialemente como true
+        if price is not None:  # Solo establecer 'price' si se proporciona
+            book.price = price
+        book.photo = response['secure_url']
+        book.user_id = user_id
+        book.available = True
         book.save()
         return jsonify(book.serialize()), 200
-    
-    return jsonify({"succes": "Publiación de libro exitosa"}), 200
+
+    return jsonify({"succes": "Publicación de libro exitosa"}), 200
+
+###EDITAR LIBROS
+@api.route('/edit_book/<int:book_id>', methods=['PUT'])
+@jwt_required()
+def edit_book(book_id):
+    user_id = get_jwt_identity()  # Obtener el ID del usuario actual
+    book = Book.query.filter_by(id=book_id, user_id=user_id).first()
+
+    if not book:
+        return jsonify({"error": "El libro no existe o no tienes permiso para editarlo."}), 403
+
+    # Obtener los datos actualizados del libro desde la solicitud formdata
+    title = request.form.get('title', book.title)
+    author = request.form.get('author', book.author)
+    cathegory = request.form.get('cathegory', book.cathegory)
+    number_of_pages = request.form.get('number_of_pages', book.number_of_pages)
+    description = request.form.get('description', book.description)
+    type = request.form.get('type', book.type)
+    price = request.form.get('price', book.price)
+    photo = request.files.get('photo')  # Obtener la nueva foto desde formdata
+
+    # Actualizar los campos del libro con los datos proporcionados
+    book.title = title
+    book.author = author
+    book.cathegory = cathegory
+    book.number_of_pages = number_of_pages
+    book.description = description
+    book.type = type
+    book.price = price
+
+    # Actualizar la foto si se proporciona una nueva
+    if photo:
+        response = upload(photo, folder="market_image")
+        if response:
+            book.photo = response['secure_url']  # Actualizar la URL de la foto en la base de datos
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+
+    return jsonify({"success": "El libro ha sido actualizado correctamente."}), 200
 
 
 ###LISTAR TODOS LOS LIBROS DISOPNIBLES
@@ -363,7 +374,8 @@ def get_book_details(id):
             'price': book.price,
             'photo': book.photo,
             'user_id': book.user_id,
-            'user_name': book.user.name
+            'user_name': book.user.name,
+            'user': book.user.serialize()
         }
 
         # Devuelve los detalles del libro como una respuesta JSON
@@ -398,7 +410,8 @@ def get_user_books(user_id):
     if user is None:
         return jsonify({"error": "Usuario no encontrado"}), 404
     
-    user_books = Book.query.filter_by(user_id=user_id).all()
+    
+    user_books = Book.query.filter_by(user_id=user_id, available=True).all()
     user_books_list = [book.serialize() for book in user_books]
     
     return jsonify(user_books_list), 200
@@ -412,31 +425,28 @@ def create_message():
     sender_id = request.json.get('sender_id')
     receiver_id = request.json.get('receiver_id')
     book_id = request.json.get('book_id')
+    purchase_id = request.json.get('purchase_id')
     message_text = request.json.get('message_text')
     
     # Verificar usuarios y libro
     sender = User.query.get(sender_id)
     receiver = User.query.get(receiver_id)
     book = Book.query.get(book_id)
+    purchase = Purchase.query.get(purchase_id)
     
-    if not sender or not receiver or not book:
-        return jsonify({'error': 'Usuarios o libro no encontrados'}), 400
+    if not sender or not receiver or not book  or not purchase:
+        return jsonify({'error': 'Usuarios, libro o compra no encontrados'}), 400
     
     # Crea el mensaje
     mensaje = Mensaje()
     mensaje.sender_id = sender_id
     mensaje.receiver_id = receiver_id
     mensaje.book_id = book_id
+    mensaje.purchase_id = purchase_id
     mensaje.message_text = message_text
     mensaje.save()   
         
     return jsonify({'message': 'Mensaje creado correctamente'}), 200
-
-
-
-
-
-#----------------< CÓDIGO NUEVO JO´SE >----------------------
 
 #OBTENER MENSAJE POR COMPRA
 @api.route('/messages/purchase/<int:purchase_id>', methods=['GET'])

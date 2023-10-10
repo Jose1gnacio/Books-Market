@@ -1,0 +1,31 @@
+.sobre-nosotros {
+  padding: 20px;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-member {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  max-width: 250px;
+}
+
+.team-member-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.team-member-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.team-member-description {
+  font-size: 14px;
+}

@@ -25,6 +25,7 @@ const injectContext = (PassedComponent) => {
       state.actions.getExchangeBooks();
       state.actions.getSaleBooks();
       state.actions.getMySaleBooks(state.store.currentUser?.user?.user_id);
+      // state.actions.getMyMessageForBook(2);
 
       /* state.actions.getOneBook(); */
     }, []);

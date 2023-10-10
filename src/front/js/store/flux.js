@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((error) => console.log("error", error));
       },
-      //************************************************************************* */
+
       ////LISTA LIBROS EN INTERCAMBIO
       getExchangeBooks: () => {
         var requestOptions = {
@@ -176,7 +176,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) => console.log("error", error));
       },
 
-      //********************************************************************** */
       //---------< funcion para  registro  de usuario >----------------->
 
       handleChangeRegister: (e) => {
@@ -219,7 +218,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.error(error);
         }
       },
-
       //----------< Login usuario >---------------------------------------------->
 
       //---- funcion para  login  de usuario------------------------------------------->
@@ -244,7 +242,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (data.access_token) {
             setStore({ currentUser: data });
             sessionStorage.setItem("currentUser", JSON.stringify(data));
-            navigate("/");
+            navigate("/profile");
           } else {
             setStore({
               alert: {
@@ -268,6 +266,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           [e.target.name]: e.target.value,
         });
       },
+
       // VERIFICA QUE EXISTA EL USUARIO
       checkUser: () => {
         if (sessionStorage.getItem("currentUser")) {
@@ -285,6 +284,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           sessionStorage.removeItem("currentUser");
         }
       },
+
       ///POST LIBRO CON FOTOS
       postBook: async (formData, navigate) => {
         try {
@@ -299,7 +299,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
             .then((response) => response.text())
             .then((result) => {
-              navigate("/allBooks");
+              navigate("/");
               getActions().getLibros();
               console.log(result);
             })
@@ -347,7 +347,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           e.target.reset();
 
           console.log("SUBMIT");
+          console.log("SUBMIT");
         } catch (error) {
+          console.log(error);
           console.log(error);
         }
       },
@@ -676,7 +678,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => {
             setStore({ myChat: data });
-            console.log("myChat", data);
+            console.log("myChat:", data);
           })
           .catch((error) => console.log("error", error));
       },
