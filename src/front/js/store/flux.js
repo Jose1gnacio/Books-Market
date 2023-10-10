@@ -299,7 +299,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
             .then((response) => response.text())
             .then((result) => {
-              navigate("/");
+              navigate("/allBooks");
               getActions().getLibros();
               console.log(result);
             })
@@ -347,9 +347,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           e.target.reset();
 
           console.log("SUBMIT");
-          console.log("SUBMIT");
         } catch (error) {
-          console.log(error);
           console.log(error);
         }
       },
@@ -678,7 +676,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => {
             setStore({ myChat: data });
-            console.log("myChat:", data);
+            console.log("myChat", data);
           })
           .catch((error) => console.log("error", error));
       },

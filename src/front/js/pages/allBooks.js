@@ -36,7 +36,6 @@ export const AllBooks = () => {
                   {libro.author}
                 </p>
                 <p className="text-center  mb-3">{libro.price}</p>
-                <p className="text-center  mb-3">{store.oneBook?.user_name}</p>
               </div>
               <div className="d-flex justify-content-center">
                 <Link

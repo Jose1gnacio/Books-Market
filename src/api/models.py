@@ -155,7 +155,7 @@ class Mensaje(db.Model):
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
     message_text = db.Column(db.String(250), nullable=False)
     purchase_id = db.Column(db.Integer, db.ForeignKey('purchase.id'), ) 
-    message_text = db.Column(db.String(250), nullable=False)
+    
     
     sender = db.relationship('User', foreign_keys=[sender_id], backref=db.backref('sent_messages', lazy=True))
     

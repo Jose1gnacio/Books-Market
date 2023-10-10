@@ -96,13 +96,13 @@ export const BookDetails = () => {
 
   return (
     <div className="background-target container-fluid d-flex justify-content-center pb-3">
-      <div className="target d-flex ms-4 mt-3 shadow-lg px-5 py-3  rounded-4">
-        <div className="mb-0 pb-0 " style={{ width: "300px", height: "100%" }}>
+      <div className="target d-flex ms-1 mt-3  px-5 py-3 ">
+        <div className="mb-0 pb-0 " style={{ width: "100%", height: "100%" }}>
           <img
             src={store.oneBook?.photo}
-            className="shadow-sm border rounded-4"
-            alt="Hollywood Sign on The Hill"
-            style={{ width: "100%", height: "400px" }}
+            className="imagen-libro-confirmar-compra"
+            alt="image-seller"
+            // style={{ width: "100%", height: "400px" }}
           />
           <Link
             to={`/otherProfile/${store.oneBook?.user_id}`}
@@ -111,25 +111,21 @@ export const BookDetails = () => {
               actions.getOtherBooks(store.oneBook?.user_id);
             }}
           >
-            <div className="d-flex mt-2 ms-4 rounded-5 shadow seller-grad">
-              <div>
-                <img
-                  src={store.oneBook?.user?.userImage}
-                  className="card-img-top shadow rounded-circle mt-1 ms-2"
-                  alt="Hollywood Sign on The Hill"
-                  style={{ width: "70px", height: "70px" }} // Asegura que el ancho y el alto sean iguales
-                />
-              </div>
-              <div className="mt-3 ms-3 ">
-                <p className="text-white mb-0 fw-medium">
-                  {store.oneBook?.user?.name} {store.oneBook?.user?.lastname}{" "}
-                </p>
-                <p className="text-white mb-3">Vendido por</p>
-              </div>
+            <div className="d-flex mt-1 ms-0   seller-grad">
+              <img
+                src={store.oneBook?.user?.userImage}
+                className="img-seller "
+                alt="img-seller"
+                // style={{ width: "70px", height: "70px" }} // Asegura que el ancho y el alto sean iguales
+              />
+
+              <p className="text-white mb-0 ">
+                {store.oneBook?.user?.name} {store.oneBook?.user?.lastname}{" "}
+              </p>
+              <p className="text-white mb-3">Vendido por</p>
             </div>
           </Link>
         </div>
-
         <div className="mt-5 ms-5 mb-5" style={{ width: "500px" }}>
           <h1 className="fs-1 text-dark text-center mb-1">
             {store.oneBook?.title}

@@ -60,7 +60,7 @@ export const MyInformation = () => {
               ) : (
                 <button
                   type="button"
-                  class=" btn btn-dark btn-sm"
+                  class=" btn btn-dark btn-sm buttonPerfil"
                   onClick={handleEditClick}
                 >
                   Editar
@@ -147,8 +147,8 @@ export const MyInformation = () => {
               </button>
             </div>
           ) : (
-            <div>
-              <div className="d-flex align-items-center m-0 p-0 mb-2 text-center justify-content-center  ">
+            <div className="container">
+              <div className=" container d-flex align-items-center m-0 p-0 mb-2 text-center justify-content-center  ">
                 <p className="editProfile rounded-start-pill pt-2 text-black fs-6">
                   Nombre
                 </p>

@@ -67,3 +67,19 @@
   background: transparent;
   margin: 0 auto;
 }
+
+/* MAS ESTILOS EDITOR PERFIL */
+
+.editProfile {
+  background-color: rgb(179, 146, 27);
+  width: 150px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+.inputProfile {
+  width: 350px;
+  height: 40px;
+  text-transform: capitalize;
+}
