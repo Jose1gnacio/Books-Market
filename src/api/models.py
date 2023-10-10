@@ -65,7 +65,8 @@ class Book(db.Model):
             "price": self.price,
             "photo": self.photo,
             "available": self.available,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "user": self.user.serialize()
         }
 
     def save(self):
@@ -145,10 +146,16 @@ class Mensaje(db.Model):
     receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
     message_text = db.Column(db.String(250), nullable=False)
+    purchase_id = db.Column(db.Integer, db.ForeignKey('purchase.id'), ) 
+    message_text = db.Column(db.String(250), nullable=False)
     
     sender = db.relationship('User', foreign_keys=[sender_id], backref=db.backref('sent_messages', lazy=True))
+    
     receiver = db.relationship('User', foreign_keys=[receiver_id], backref=db.backref('received_messages', lazy=True))
+    
     book = db.relationship('Book', foreign_keys=[book_id], backref=db.backref('related_messages', lazy=True)) 
+    
+    purchase = db.relationship('Purchase', foreign_keys=[purchase_id], backref=db.backref('messages', lazy=True)) 
     
     def serialize(self):
         return {
@@ -156,6 +163,7 @@ class Mensaje(db.Model):
             "sender_id": self.sender_id,
             "receiver_id": self.receiver_id,
             "book_id": self.book_id,
+            "purchase_id": self.purchase_id,
             "message_text": self.message_text,
             "book": self.book.serialize()          
         }
@@ -171,3 +179,46 @@ class Mensaje(db.Model):
         db.session.delete(self)
         db.session.commit()
  
+
+# TABLA PARA REGISTAR COMPRAS
+class Purchase(db.Model):
+    __tablename__ = 'purchase'
+    id = db.Column(db.Integer, primary_key=True)
+    seller_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # ID del vendedor
+    buyer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)   # ID del comprador
+    book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)    # ID del libro que se compra
+    purchase_date = db.Column(db.DateTime, )
+    #message_id = db.Column(db.Integer, db.ForeignKey('mensaje.id'), nullable=True)
+
+
+
+    # Relación con la tabla de mensajes (uselist=True para múltiples mensajes por compra)
+    #messages = db.relationship('Mensaje', foreign_keys=[message_id], backref='purchase', lazy=True)
+
+
+    seller = db.relationship('User', foreign_keys=[seller_id], backref='sales', lazy=True)
+    buyer = db.relationship('User', foreign_keys=[buyer_id], backref='purchases', lazy=True)
+    book = db.relationship('Book', foreign_keys=[book_id], backref='purchases', lazy=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "seller_id": self.seller_id,
+            "buyer_id": self.buyer_id,
+            "book_id": self.book_id,
+            "purchase_date": self.purchase_date,
+            "seller": self.seller.serialize(),
+            "buyer": self.buyer.serialize(),
+            "book": self.book.serialize()           
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()

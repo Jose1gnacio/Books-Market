@@ -10,7 +10,7 @@ export const MyBuyDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const selectedBookIndex = parseInt(id, 10);
+  //const selectedBookIndex = parseInt(id, 10);
 
   useEffect(() => {
     //   actions.getMensajesLibro(store.allMessagesUser[selectedBookIndex]?.book_id);
@@ -38,26 +38,25 @@ export const MyBuyDetails = () => {
         <br></br>
         <div className="d-flex  ">
           <div className="p-0 ">
+            <p className="text-dark mb-3">{store.myOneBook[0]?.book?.author}</p>
             <p className="text-dark mb-3">
-              {store.allMessagesUser[selectedBookIndex]?.book.author}
+              {store.myOneBook[0]?.book?.description}
             </p>
             <p className="text-dark mb-3">
-              {store.allMessagesUser[selectedBookIndex]?.book.description}
+              {store.myOneBook[0]?.book?.user_name}
             </p>
-            <p className="text-dark mb-3">
-              {store.allMessagesUser[selectedBookIndex]?.book.user_name}
-            </p>
+            <p>vendedor: {store.myOneBook[0]?.seller_id}</p>
+            <p>id del libro {store.myOneBook[0]?.book_id}</p>
           </div>
         </div>
       </div>
-      <div></div>
       <div className="mt-3 ms-2  ">
         <div className="border rounded">
           <div
             className="border rounded m-2 d-flex flex-column"
             style={{ width: "500px" }}
           >
-            {store.buyChat.map((message, index) => (
+            {store.myChat.map((message, index) => (
               <div className="d-flex flex-column" key={index}>
                 {message.sender_id === store.currentUser.user.id ? (
                   <div className="align-self-start text-primary m-2">
@@ -75,32 +74,40 @@ export const MyBuyDetails = () => {
           </div>
         </div>
         <div>
-          <form className="form-control" /* onSubmit={submitMessage} */>
-            <input
-              type="text"
-              className="form-control mb-0"
-              id="message_text"
-              aria-describedby="emailHelp"
-              placeholder="Ingresa el mensaje"
-              required
-              name="message_text"
-              value={store.message_text}
-              onChange={actions.inputTextArea}
-            />
-
-            <div
-              className="btn btn-dark mx-3"
-              onClick={() => {
-                actions.inputMessage1(
-                  store.currentUser?.user?.id,
-                  store.allMessagesUser[selectedBookIndex]?.receiver_id,
-                  store.allMessagesUser[selectedBookIndex]?.book_id,
-                  store.message_text
-                );
-              }}
-            >
-              Enviar
+          <form
+            className="form-control shadow p-3"
+            onSubmit={(e) => {
+              actions.inputMessage1(
+                store.currentUser?.user?.id,
+                store.myOneBook[0]?.seller_id,
+                store.myOneBook[0]?.book_id,
+                store.message_text,
+                store.myOneBook[0]?.id,
+                id,
+                store.myOneBook[0]?.id,
+                e
+              );
+            }}
+          >
+            <div className="mb-3">
+              <label htmlFor="message_text" className="form-label">
+                Titulo
+              </label>
+              <input
+                type="text"
+                className="form-control mb-0"
+                id="message_text"
+                aria-describedby="emailHelp"
+                placeholder="Ingresa el mensaje"
+                required
+                name="message_text"
+                value={store.message_text}
+                onChange={actions.inputTextArea}
+              />
             </div>
+            <button type="" className="btn btn-success my-3">
+              Enviar
+            </button>
           </form>
         </div>
         <div></div>

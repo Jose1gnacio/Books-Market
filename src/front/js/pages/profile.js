@@ -9,9 +9,9 @@ export const Profile = () => {
   useEffect(() => {
     actions.getMySaleBooks(store.currentUser?.user?.id);
     actions.getMyExchangeBooks(store.currentUser?.user?.id);
-    actions.getAllMensajesUser(store.currentUser?.user?.id);
-    actions.allBookIdBuyUser();
-  }, []);
+    actions.getAllMyPurchasedBooks(store.currentUser?.user?.id);
+    actions.getAllMySoldBooks(store.currentUser?.user?.id);
+  }, [store.currentUser?.user?.id]);
 
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
