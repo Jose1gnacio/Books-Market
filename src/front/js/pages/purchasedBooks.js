@@ -25,14 +25,14 @@ const PurchasedBooks = () => {
         <div className="d-flex flex-wrap justify-content-center">
           {/* Crear un conjunto para almacenar los IDs de los libros ya mostrados */}
 
-          {store.myBooksPurchased.map((libro, i) => {
-            // Verificar si el ID del libro ya se mostró
+          {store.myBooksPurchased.map((compra, i) => {
+            // Verificar si el ID del compra ya se mostró
             if (
-              !displayedBookIds.has(libro.book.id) &&
-              libro.book.user_id !== store.currentUser?.user?.id
+              !displayedBookIds.has(compra.book.id) &&
+              compra.book.user_id !== store.currentUser?.user?.id
             ) {
-              // Si no se ha mostrado y el usuario no es el propietario, agrega el ID al conjunto y muestra el libro
-              displayedBookIds.add(libro.book.id);
+              // Si no se ha mostrado y el usuario no es el propietario, agrega el ID al conjunto y muestra el compra
+              displayedBookIds.add(compra.book.id);
 
               return (
                 <div
@@ -45,13 +45,13 @@ const PurchasedBooks = () => {
                       className="card-img-top"
                       style={{ maxWidth: "100%", maxHeight: "300px" }}
                       src={compra.book.photo}
-                      alt={`Portada de ${libro.book.title}`}
+                      alt={`Portada de ${compra.book.title}`}
                     />
                   </div>
                   <div className="card-body">
-                    <h6 className="card-title">{libro.book.title}</h6>
-                    <p className="card-text">{libro.book.author}</p>
-                    <p className="card-text">dueño {libro.book.user_id}</p>
+                    <h6 className="card-title">{compra.book.title}</h6>
+                    <p className="card-text">{compra.book.author}</p>
+                    <p className="card-text">dueño {compra.book.user_id}</p>
                     <p>indice: {i} </p>
                   </div>
                   <div className="d-flex justify-content-between align-items-center m-1">
@@ -65,7 +65,7 @@ const PurchasedBooks = () => {
                 </div>
               );
             }
-            return null; // Si el libro ya se mostró o el usuario es el propietario, no mostrar nada
+            return null; // Si el compra ya se mostró o el usuario es el propietario, no mostrar nada
           })}
         </div>
       </div>
