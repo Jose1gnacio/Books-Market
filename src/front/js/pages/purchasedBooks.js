@@ -11,9 +11,11 @@ const PurchasedBooks = () => {
   const displayedBookIds = new Set();
 
   useEffect(() => {
-    actions.allBookIdBuyUser();
-  }, []);
-
+    actions.getMySaleBooks(store.currentUser?.user?.id);
+    actions.getMyExchangeBooks(store.currentUser?.user?.id);
+    actions.getAllMyPurchasedBooks(store.currentUser?.user?.id);
+    actions.getAllMySoldBooks(store.currentUser?.user?.id);
+  }, [store.currentUser?.user?.id]);
   return (
     <div>
       <div className="container-fluid">
@@ -23,7 +25,7 @@ const PurchasedBooks = () => {
         <div className="d-flex flex-wrap justify-content-center">
           {/* Crear un conjunto para almacenar los IDs de los libros ya mostrados */}
 
-          {store.allMessagesUser.map((libro, i) => {
+          {store.myBooksPurchased.map((libro, i) => {
             // Verificar si el ID del libro ya se mostró
             if (
               !displayedBookIds.has(libro.book.id) &&
@@ -42,7 +44,7 @@ const PurchasedBooks = () => {
                     <img
                       className="card-img-top"
                       style={{ maxWidth: "100%", maxHeight: "300px" }}
-                      src={libro.book.photo}
+                      src={compra.book.photo}
                       alt={`Portada de ${libro.book.title}`}
                     />
                   </div>
@@ -53,7 +55,10 @@ const PurchasedBooks = () => {
                     <p>indice: {i} </p>
                   </div>
                   <div className="d-flex justify-content-between align-items-center m-1">
-                    <Link to={`/myBuyDetails/${i}`} className="btn btn-dark">
+                    <Link
+                      to={`/myBuyDetails/${compra.book.id}`}
+                      className="btn btn-dark"
+                    >
                       Ver detalles
                     </Link>
                   </div>

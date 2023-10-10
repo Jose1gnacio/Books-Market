@@ -39,6 +39,7 @@ import { ComoDonar } from "./pages/comoDonar";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { MyInformation } from "./pages/myInformation";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "/";
@@ -66,6 +67,9 @@ const Layout = () => {
               element={<DonacionesRealizadas />}
               path="/donacionesRalizadas"
             />
+
+            <Route element={<MyInformation />} path="/myInformation" />
+
             <Route element={<ComoDonar />} path="/comoDonar" />
             <Route element={<BookReviews />} path="/bookreviews" />
             <Route element={<Login />} path="/login" />

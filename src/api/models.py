@@ -14,6 +14,14 @@ class User(db.Model):
     region = db.Column(db.String(120), nullable=False)
     userImage = db.Column(db.String(120), default="no-userImage.png")
     # roles = db.relationship('Role', secondary=roles_users)
+    #     def __init__(self,name='',lastname=''):
+    #         self.name = name
+    #         self.lastname = lastname
+    # class Role(db.Model):
+    #     __tablename__ = "role"
+    #     id = db.Column(db.Integer(),primary_key=True)
+    #     roleName = db.Column(db.String())
+    
 
     def serialize(self):
         return {
