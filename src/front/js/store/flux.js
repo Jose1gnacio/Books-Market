@@ -299,7 +299,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
             .then((response) => response.text())
             .then((result) => {
-              navigate("/");
+              navigate("/allBooks");
               getActions().getLibros();
               console.log(result);
             })

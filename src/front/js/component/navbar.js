@@ -24,7 +24,7 @@ export const Navbar = () => {
               <div className="col py-1">
                 <form className="d-flex" role="search">
                   <input
-                    className="form-control"
+                    className="form-control input-buscar"
                     style={{
                       borderTopLeftRadius: "20px",
                       borderBottomLeftRadius: "20px",
@@ -52,11 +52,11 @@ export const Navbar = () => {
               </div>
             )}
           <div className="col">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
+            <div className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
               {location.pathname !== "/register" &&
                 location.pathname !== "/login" &&
                 location.pathname !== "/registroLibro" && (
-                  <div className="nav-item nombre-navbar mt-3 me-3">
+                  <div className="nav-item nombre-navbar mt-3 me-3 fw-medium">
                     {store.currentUser?.user?.name}
                   </div>
                 )}
@@ -89,7 +89,7 @@ export const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="profile" className="dropdown-item">
+                      <Link to="profile" className="dropdown-item ">
                         {store.currentUser?.user?.name}
                       </Link>
                     </li>
@@ -134,7 +134,7 @@ export const Navbar = () => {
                   </ul>
                 </li>
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -149,7 +149,7 @@ export const Navbar = () => {
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  LIBROS EN VENTA
+                  LIBROS
                 </Link>
               </div>
               <div className="">
@@ -167,16 +167,16 @@ export const Navbar = () => {
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  LIBROS MAS VENDIDOS
+                  LIBROS EN VENTA
                 </Link>
               </div>
               <div className="">
                 <Link
-                  to="/enviar_formulario"
+                  to="/comoDonar"
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  DONACIONES REALIZADAS
+                  DONACIONES
                 </Link>
               </div>
             </div>

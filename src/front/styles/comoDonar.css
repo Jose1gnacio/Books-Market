@@ -1,0 +1,25 @@
+.about {
+  margin: 0 auto;
+}
+.containerImg {
+  background-image: url("https://cdn.pixabay.com/photo/2020/04/14/05/38/hand-5040992_1280.jpg");
+  background-position: center;
+  height: 400px;
+}
+.containerImgMes {
+  background-image: url("https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg");
+  background-position: center;
+  height: 300px;
+  filter: grayscale(100%);
+}
+.mes {
+  font-size: 700%;
+  color: white;
+}
+.containerInstitucion {
+  background-color: rgb(146, 197, 211);
+  height: 1100px;
+}
+.fotoInstitution1 {
+  background-image: url("https://cdn.pixabay.com/photo/2020/04/14/05/38/hand-5040992_1280.jpg");
+}
