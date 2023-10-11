@@ -1,11 +1,10 @@
 import React from "react";
 import "../../../styles/intercambio.css";
 
-
 const BannerIntercambio = () => {
   return (
     <div className=" mt-2 componente-texto">
-      <h4 className="card-title mb-4 componente-texto">
+      <h4 className="card-title mt-4 componente-texto">
         ¡Cambia tus lecturas sin gastar un peso!
         <br /> Únete al Intercambio de Libros
       </h4>

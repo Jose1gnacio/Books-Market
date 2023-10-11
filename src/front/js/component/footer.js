@@ -139,22 +139,22 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link
+                  {/* <Link
                     to="#"
                     className="nav-link p-0 text-white"
                     aria-current="page"
                   >
                     Contactanos
-                  </Link>
+                  </Link> */}
                 </li>
                 <li className="nav-item mb-2">
-                  <Link
+                  {/* <Link
                     to="#"
                     className="nav-link p-0 text-white"
                     aria-current="page"
                   >
                     Preguntas frecuentes
-                  </Link>
+                  </Link> */}
                 </li>
               </ul>
             </div>
