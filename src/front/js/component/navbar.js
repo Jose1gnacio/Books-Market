@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbarBooks navbar navbar-expand-lg bg-body-tertiary px-5">
+      <nav className="navbarBooks navbar navbar-expand-lg  px-5">
         <div className="container-fluid">
           <div className="col d-flex">
             <Link to="/" className="nav-bar brand   fs-4">
@@ -141,7 +141,7 @@ export const Navbar = () => {
       {location.pathname !== "/register" &&
         location.pathname !== "/login" &&
         location.pathname !== "/registroLibro" && (
-          <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+          <nav className="navbar navbar-expand-lg bg-dark">
             <div className="container-fluid d-flex justify-content-center">
               <div className="">
                 <Link
