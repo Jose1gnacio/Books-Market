@@ -1,0 +1,63 @@
+/* register--------------------------------------------------------------------- */
+body {
+  background-color: #f5f5f5;
+}
+.contenedor-register {
+  margin-top: 3rem !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+  /* border: solid 2px black; */
+}
+
+.buttonRegister:hover {
+  background: rgb(179, 146, 27);
+  border: rgb(146, 197, 211) 1px solid;
+}
+
+.seleccion-region {
+  border-radius: 2rem;
+}
+
+/* .contenedor-imagen {
+  height: auto;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border: solid 2px black;
+  border-radius: 1rem;
+} */
+.img-register {
+  object-fit: cover;
+  height: 603px;
+  width: 300px;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.contenedor-form {
+  height: auto;
+  /* border: solid 2px black; */
+  padding-left: 0;
+  width: 450px;
+}
+
+.form-card {
+  padding: 0 30px;
+  background-color: rgb(146, 197, 211);
+  font-family: "Roboto", sans-serif;
+  height: auto;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  height: 603px;
+}
+
+.buttonRegister {
+  border-radius: 2rem;
+  border: none;
+}

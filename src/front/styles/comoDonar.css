@@ -1,0 +1,28 @@
+.about {
+  margin: 0 auto;
+}
+.containerImg {
+  background-image: url("https://cdn.pixabay.com/photo/2020/04/14/05/38/hand-5040992_1280.jpg");
+  background-position: center;
+  height: 400px;
+}
+.containerImgMes {
+  background-image: url("https://cdn.pixabay.com/photo/2015/12/01/15/43/black-1072366_640.jpg");
+  background-position: center;
+  height: 300px;
+}
+.mes {
+  margin-top: 30px;
+  font-size: 1200%;
+  color: rgb(146, 197, 211);
+}
+.containerInstitucion {
+  background-color: rgb(146, 197, 211);
+  height: 1250px;
+}
+.fotoInstitution1 {
+  background-image: url("https://www.unicef.org/guatemala/sites/unicef.org.guatemala/files/styles/hero_desktop/public/0D6A5637.jpg?itok=APrSFVH6");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: 700px 400px; */
+}

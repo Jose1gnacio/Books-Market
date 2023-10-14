@@ -1,0 +1,116 @@
+.containerProfile {
+  background-color: rgb(146, 197, 211);
+  width: 900px;
+  margin: 3rem;
+  padding-top: 10rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  align-content: center;
+}
+.containerFoto {
+  background-color: rgb(146, 197, 211);
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+.cardDatos {
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+.cardImage {
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  /* border-radius: 50%; */
+}
+.cardImage:hover {
+  box-shadow: 5px 10px 20px 1px rgba(255, 255, 255, 0.273);
+  transition: all 0.7s linear;
+}
+.containerDatosPersonales {
+  background-color: rgb(146, 197, 211);
+  margin-bottom: 1rem;
+  border: none;
+  text-align: center;
+}
+.bienvenida {
+  font-size: x-large;
+  margin-bottom: 0;
+}
+.itemPerfil {
+  background-color: rgb(179, 146, 27);
+  border: none;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5rem;
+}
+.nombre {
+  text-transform: capitalize;
+}
+.buttonPerfil {
+  background-color: rgb(146, 197, 211);
+  max-width: 10rem;
+  margin: 0 auto;
+  color: black;
+}
+
+.overflow-profile {
+  overflow: hidden;
+  transition: all 0.9s linear;
+  /* border-radius: 50%;
+  width: 100%;
+  height: 100%; */
+}
+
+.card-img-top-profile {
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+  background-color: rgb(146, 197, 211);
+}
+
+.card-img-top-profile:hover {
+  transform: scale(1.8);
+  background: transparent;
+  margin: 0 auto;
+}
+
+/* MAS ESTILOS EDITOR PERFIL */
+
+.editProfile {
+  background-color: rgb(179, 146, 27);
+  width: 150px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  /* box-shadow: inset -1px -1px 6px #000000c0; */
+}
+.inputProfile {
+  width: 350px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  box-shadow: inset -1px -1px 6px #000000c0;
+}
+.inputProfile2 {
+  width: 350px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: inset -1px -1px 6px #000000c0;
+}
+.buttonEdition {
+  background-color: rgb(47, 46, 42);
+  color: #fff;
+  border: none;
+  justify-self: end;
+  /* box-shadow: inset -1px -1px 6px #000000c0; */
+}

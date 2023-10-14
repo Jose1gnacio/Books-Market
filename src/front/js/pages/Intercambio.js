@@ -1,20 +1,23 @@
 import React from "react";
-
-import Banner from '../component/intercambio/Banner'
-import BannerInverso from '../component/intercambio/BannerInverso'
+import "../../styles/intercambio.css";
+import BannerIntercambio from "../component/intercambio/BannerIntercambio";
 
 const Intercambio = () => {
-
   return (
-    <div className="div container-fluid">
-      <div className="div row">
-        <Banner />
+    <div className="contenedor container-fluid p-0">
+      <div className="colorFondo row-md-6 m-0">
+        <div className="img-intercambio col-md-4"></div>
+        <div className="baner-intercambio">
+          <BannerIntercambio />
+        </div>
       </div>
-      <div className="div row">
-        <BannerInverso />
-      </div>
+          <div className="containerButton container">
+            <a href="exchangeBooks" className="button">
+              Intercambiar
+            </a>
+          </div>
     </div>
-  )
-}
+  );
+};
 
-export default Intercambio
+export default Intercambio;

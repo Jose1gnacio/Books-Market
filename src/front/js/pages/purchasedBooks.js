@@ -1,46 +1,68 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import "../../styles/allBooks.css";
 
 import { Context } from "../store/appContext";
 
+export const PurchasedBooks = () => {
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+  const displayedBookIds = new Set();
 
+  useEffect(() => {
+    actions.getMySaleBooks(store.currentUser?.user?.id);
+    actions.getMyExchangeBooks(store.currentUser?.user?.id);
+    actions.getAllMyPurchasedBooks(store.currentUser?.user?.id);
+    actions.getAllMySoldBooks(store.currentUser?.user?.id);
+  }, [store.currentUser?.user?.id]);
 
-const PurchasedBooks = () => {
-
-    const { store, actions } = useContext(Context)
-    const navigate = useNavigate()
-    
-    
-    useEffect(() => {
-        actions.getAllMensajesUser(store.currentUser?.user?.id);
-        actions.allBookIdBuyUser(); 
-    }, []);
-
-    return (
-        <div className="container my-3 p-0 ">
-            <h1>Compras de: {store.currentUser?.user?.name} {store.currentUser?.user?.lastname} </h1>
-            <h1>Id: {store.currentUser?.user?.id}</h1>
-            <button onClick={(e)=>{actions.allBookIdBuyUser}}>boton 1</button>
-            <button onClick={(e)=>{actions.getMensajesLibro(store.allMessagesUser[0]?.book_id)}}>boton 2</button>
-            <div className="card shadow-sm  m-3" style={{ width: "220px", height: "300" }} >
-                <div className="d-flex justify-content-center">
-                    <img className="card-img-top" style={{ maxWidth: "100%", maxHeight: "300px" }} src="" alt={`Portada de `} />
-                </div>
-                <div className="card-body">
-                    <h6 className="card-title">Titulo: {store.allMessagesUser[0]?.book?.title} </h6>
-                    <p className="card-text">Id libro: {store.allMessagesUser[0]?.book_id} </p>
-                    <p className="card-text">Mensaje1 por id de libro: {store.buyChat[0]?.message_text}</p>
-                    <p className="card-text">Mensaje2 por id de libro: {store.buyChat[1]?.message_text}</p>
-                </div>
-                <div className="d-flex justify-content-between align-items-center m-1">
-                    <Link to={`/purchasedBooks`} className="btn btn-dark">Ver detalles</Link>
-                    <i className="fa-regular fa-heart fa-2x" onClick={(e)=>{actions.allBookIdBuyUser}}></i>
-                </div>
-            </div>
+  return (
+    <div>
+      <div className="container-fluid">
+        <div className="text-center m-3 mt-5 mb-5">
+          <h1>Tus Compras e Intercambios</h1>
         </div>
-    );
-
+        <div className="d-flex flex-wrap justify-content-center">
+          {store.myBooksPurchased.map((compra, i) => (
+            <div
+              className="contenedor-card p-0"
+              style={{ width: "220px", height: "300" }}
+              key={i}
+            >
+              <div className="d-flex justify-content-center">
+                <img
+                  className="card-img-top allbooks-img mb-0"
+                  style={{ width: "220px", height: "300px" }}
+                  src={compra.book.photo}
+                  alt={`Portada de ${compra.book.title}`}
+                />
+              </div>
+              <div className="card-body pt-0 mt-0 d-block justify-content-center">
+                <div style={{ height: "110px" }}>
+                  <p className="text-center m-1">
+                    <b>{compra.book.title}</b>
+                  </p>
+                  <p className="text-center text-capitalize mb-1">
+                    {compra.book.author}
+                  </p>
+                  <p className="text-center  mb-3">{compra.book.price}</p>
+                  <p className="text-center  mb-3">{compra.seller.name}</p>
+                </div>
+                <div className="d-flex justify-content-center">
+                  <Link
+                    to={`/myBuyDetails/${compra.book.id}`}
+                    className="btn btn-dark mb-3 boton-ver-detalles"
+                  >
+                    Ver detalles
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
-export default PurchasedBooks

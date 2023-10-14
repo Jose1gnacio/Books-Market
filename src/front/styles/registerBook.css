@@ -1,0 +1,36 @@
+.contenedor-bookRegister {
+  max-width: 700px;
+  min-height: 500px;
+}
+
+.form-register-book {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: rgb(146, 197, 211);
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 1rem;
+
+  border-bottom-left-radius: 1rem;
+  border-bottom-left-radius: 0;
+}
+
+.boton {
+  width: 50%;
+  margin: auto;
+  color: #fff;
+  background-image: linear-gradient(#38b6ff, #0f9ae8);
+  background: rgb(179, 146, 27);
+  border: none;
+  border-radius: 0.5em;
+}
+
+.imagenRegistroLibro {
+  height: auto;
+  width: 325px;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  margin-left: -10px;
+  object-fit: cover;
+}
