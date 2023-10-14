@@ -9,9 +9,9 @@ export const Profile = () => {
   useEffect(() => {
     actions.getMySaleBooks(store.currentUser?.user?.id);
     actions.getMyExchangeBooks(store.currentUser?.user?.id);
-    actions.getAllMensajesUser(store.currentUser?.user?.id);
-    actions.allBookIdBuyUser();
-  }, []);
+    actions.getAllMyPurchasedBooks(store.currentUser?.user?.id);
+    actions.getAllMySoldBooks(store.currentUser?.user?.id);
+  }, [store.currentUser?.user?.id]);
 
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
@@ -31,11 +31,11 @@ export const Profile = () => {
         <div className="col-md-7 text-center">
           <div className="row">
             <p className="bienvenida">
-              Nos alegra que estes aquí, {store.currentUser?.user?.name}!{" "}
+              Nos alegra que estés aquí, {store.currentUser?.user?.name}!{" "}
             </p>
           </div>
           <div className="row card-body containerDatosPersonales">
-            <h5 className="card-title nombre">
+            <h5 className="card-title nombre text-capitalize">
               {store.currentUser?.user?.name}{" "}
               {store.currentUser?.user?.lastname}{" "}
             </h5>
@@ -43,7 +43,10 @@ export const Profile = () => {
             <h6 className="card-text">
               Región de {store.currentUser?.user?.region}
             </h6>
-            <Link className="btn btn-dark btn buttonPerfil p-1 mt-2">
+            <Link
+              className="btn btn-dark btn buttonPerfil p-1 mt-2"
+              to="/myInformation"
+            >
               Editar Perfil
             </Link>
           </div>

@@ -4,6 +4,7 @@ body {
 }
 .navbarBooks {
   background-color: rgb(146, 197, 211);
+  box-shadow: -1px -1px 6px #000000c0;
 }
 .brand:hover {
   color: rgb(196, 73, 28);
@@ -23,6 +24,10 @@ body {
   color: white;
 }
 
+.input-buscar {
+  border: none;
+  border-style: none !important;
+}
 .img-navbar {
   height: 50px;
   width: 50px;
@@ -42,6 +47,8 @@ body {
 .nombre-navbar {
   text-transform: capitalize;
   display: flex;
+  font-weight: 600;
+  justify-items: center;
 }
 
 /* FOOTER------------------------------------------------------------------------------- */

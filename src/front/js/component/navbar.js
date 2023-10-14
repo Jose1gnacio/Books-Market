@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbarBooks navbar navbar-expand-lg bg-body-tertiary px-5">
+      <nav className="navbarBooks navbar navbar-expand-lg  px-5">
         <div className="container-fluid">
           <div className="col d-flex">
             <Link to="/" className="nav-bar brand   fs-4">
@@ -24,7 +24,7 @@ export const Navbar = () => {
               <div className="col py-1">
                 <form className="d-flex" role="search">
                   <input
-                    className="form-control"
+                    className="form-control input-buscar"
                     style={{
                       borderTopLeftRadius: "20px",
                       borderBottomLeftRadius: "20px",
@@ -52,11 +52,11 @@ export const Navbar = () => {
               </div>
             )}
           <div className="col">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
+            <div className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
               {location.pathname !== "/register" &&
                 location.pathname !== "/login" &&
                 location.pathname !== "/registroLibro" && (
-                  <div className="nav-item nombre-navbar mt-3 me-3">
+                  <div className="nav-item nombre-navbar mt-3 me-3 fw-medium">
                     {store.currentUser?.user?.name}
                   </div>
                 )}
@@ -89,7 +89,7 @@ export const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="profile" className="dropdown-item">
+                      <Link to="profile" className="dropdown-item ">
                         {store.currentUser?.user?.name}
                       </Link>
                     </li>
@@ -134,14 +134,14 @@ export const Navbar = () => {
                   </ul>
                 </li>
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </nav>
       {location.pathname !== "/register" &&
         location.pathname !== "/login" &&
         location.pathname !== "/registroLibro" && (
-          <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+          <nav className="navbar navbar-expand-lg bg-dark">
             <div className="container-fluid d-flex justify-content-center">
               <div className="">
                 <Link
@@ -149,7 +149,7 @@ export const Navbar = () => {
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  LIBROS EN VENTA
+                  LIBROS
                 </Link>
               </div>
               <div className="">
@@ -167,16 +167,16 @@ export const Navbar = () => {
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  LIBROS MAS VENDIDOS
+                  LIBROS EN VENTA
                 </Link>
               </div>
               <div className="">
                 <Link
-                  to="/enviar_formulario"
+                  to="/comoDonar"
                   className="navbarItem nav active mx-4"
                   aria-current="page"
                 >
-                  DONACIONES REALIZADAS
+                  DONACIONES
                 </Link>
               </div>
             </div>

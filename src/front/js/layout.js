@@ -23,11 +23,11 @@ import BookReviews from "./pages/BookReviews";
 
 import Intercambio from "./pages/Intercambio";
 
-import PurchasedBooks from "./pages/purchasedBooks";
+import { PurchasedBooks } from "./pages/purchasedBooks";
 
 import { Profile } from "./pages/profile";
 
-import SoldBooks from "./pages/soldBooks";
+import { SoldBooks } from "./pages/soldBooks";
 
 /* FOOTERS */
 import { MySaleBooks } from "./pages/mySaleBooks";
@@ -39,6 +39,11 @@ import { ComoDonar } from "./pages/comoDonar";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { MyInformation } from "./pages/myInformation";
+import { OtherProfile } from "./pages/otherProfile";
+import { MySoldDetails } from "./pages/mySoldDetails";
+import { MyExchangeBookDetails } from "./pages/myExchangeBookDetails";
+import { MySaleBookDetails } from "./pages/mySaleBookDetails";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "/";
@@ -60,12 +65,23 @@ const Layout = () => {
             <Route element={<MySaleBooks />} path="/mySaleBooks" />
             <Route element={<MyExchangeBooks />} path="/myExchangeBooks" />
             <Route element={<MyBuyDetails />} path="/myBuyDetails/:id" />
+            <Route element={<MySoldDetails />} path="/mySoldDetails/:id" />
             <Route element={<SobreNosotros />} path="/sobreNosotros" />
             <Route element={<NuestraHistoria />} path="/nuestraHistoria" />
             <Route
               element={<DonacionesRealizadas />}
               path="/donacionesRalizadas"
             />
+            <Route
+              element={<MySaleBookDetails />}
+              path="/mySaleBooks/mySaleBookDetails/:id"
+            />
+            <Route
+              element={<MyExchangeBookDetails />}
+              path="/myExchangeBooks/myExchangeBookDetails/:id"
+            />
+            <Route element={<MyInformation />} path="/myInformation" />
+
             <Route element={<ComoDonar />} path="/comoDonar" />
             <Route element={<BookReviews />} path="/bookreviews" />
             <Route element={<Login />} path="/login" />
@@ -75,7 +91,9 @@ const Layout = () => {
             <Route element={<PurchasedBooks />} path="/purchasedBooks" />
 
             <Route element={<Profile />} path="/profile" />
+            <Route element={<OtherProfile />} path="/otherProfile/:id" />
             <Route element={<SoldBooks />} path="/soldBooks" />
+
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

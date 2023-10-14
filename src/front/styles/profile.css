@@ -1,5 +1,6 @@
 .containerProfile {
   background-color: rgb(146, 197, 211);
+  width: 900px;
   margin: 3rem;
   padding-top: 10rem;
   padding: 2rem;
@@ -8,14 +9,25 @@
 }
 .containerFoto {
   background-color: rgb(146, 197, 211);
-  /* height: 300px;
+  height: 300px;
   width: 300px;
-  border-radius: 50%; */
+  border-radius: 50%;
+}
+.cardDatos {
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
 }
 .cardImage {
   background: transparent;
   border-radius: 50%;
   margin: 0 auto;
+  height: 300px;
+  width: 300px;
+  /* border-radius: 50%; */
 }
 .cardImage:hover {
   box-shadow: 5px 10px 20px 1px rgba(255, 255, 255, 0.273);
@@ -66,4 +78,39 @@
   transform: scale(1.8);
   background: transparent;
   margin: 0 auto;
+}
+
+/* MAS ESTILOS EDITOR PERFIL */
+
+.editProfile {
+  background-color: rgb(179, 146, 27);
+  width: 150px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  /* box-shadow: inset -1px -1px 6px #000000c0; */
+}
+.inputProfile {
+  width: 350px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  box-shadow: inset -1px -1px 6px #000000c0;
+}
+.inputProfile2 {
+  width: 350px;
+  height: 40px;
+  text-transform: capitalize;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: inset -1px -1px 6px #000000c0;
+}
+.buttonEdition {
+  background-color: rgb(47, 46, 42);
+  color: #fff;
+  border: none;
+  justify-self: end;
+  /* box-shadow: inset -1px -1px 6px #000000c0; */
 }

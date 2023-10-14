@@ -1,45 +1,90 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import "../../styles/comoDonar.css";
 
 import { Context } from "../store/appContext";
 
 export const ComoDonar = () => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
-    return (
-        <div className="container-fluid">
-            <div className="d-flex justify-content-center m-5 mb-5">
-                <img className="rounded"
-                    src="https://www.estandarte.com/st/img/fot/webp/fot_2762_gr.webp"
-                    alt="..."
-                    style={{ width: "px", height: "400px" }} />
+  return (
+    <div className="container-fluid justify-content-center ">
+      <div className="row m-3">
+        <div className="about col-10">
+          {/* <div className="containerImg col-12"></div> */}
+          <div className="textDonation col-12 text-center p-5">
+            <h2 className="mb-4">
+              ¡Bienvenidos a nuestra iniciativa de Donación Mensual de Libros!
+            </h2>
+            <p className="mb-5 fs-6">
+              En Books Market, creemos en el poder de los libros para
+              transformar vidas y en la importancia de compartir el
+              conocimiento. Cada mes, seleccionamos cuidadosamente una
+              institución educativa de bajos recursos que necesita
+              desesperadamente acceso a materiales de lectura de calidad. Y aquí
+              es donde tú, nuestros queridos usuarios, entran en acción.
+              Queremos invitarte a unirte a nosotros en esta noble causa y
+              marcar la diferencia en la vida de quienes más lo necesitan. Tu
+              participación es fundamental para llevar la magia de la lectura a
+              aquellos que tienen menos recursos para acceder a libros.
+            </p>
+            <h4 className="mb-3">¿Cómo puedes contribuir?</h4>
+            <p className="mb-3 fs-6">
+              Es sencillo. Cada mes seleccionamos una institución que necesita
+              nuestra ayuda, te la presentamos y proporcionamos sus datos para
+              que puedas colaborar con tu donativo de libros directamente. Tú
+              decides la cantidad de libros que deseas donar, ¡cada libro
+              cuenta!
+            </p>
+          </div>
+          <div className="containerInstitucion col-12 row p-5 mb-5">
+            <div className="containerImgMes col-12 text-center p-3">
+              <h1 className="mes">OCTUBRE</h1>
             </div>
-            <div className="m-5 pt-5">
-                <div className="mb-4">
-                    <h3 className="m-3 "><strong>Paso I: Elegir los Libros para Donar</strong></h3>
-                    <h6>1.- Navegue por su casa en busca de libros que desee donar.</h6>
-                    <h6>2.- Ingrese a su cuenta en nuestra página web (si no tiene una, regístrese).</h6>
-                </div>
-                <div className="mb-4">
-                    <h3 className="m-3"><strong>Paso II: Ponerse en Contacto con Nosotros</strong></h3>
-                    <h6>1.- Después de seleccionar los libros que desea donar, diríjase a la sección de Donaciones realizadas" en nuestro sitio web y haga click en el boton "Realizar donaciones".</h6>
-                    <h6>2.- Complete el formulario de contacto proporcionando la información solicitada</h6>
-                </div>
-                <div className="mb-4">
-                    <h3 className="m-3"><strong>Paso III: Realizar el Envío a Nuestra Bodega de Libros</strong></h3>
-                    <h6>1.- Si su donación es aceptada, recibirá instrucciones detalladas sobre cómo empacar y enviar los libros a nuestra bodega de libros. Esto incluirá la dirección de envío y cualquier otra información importante.</h6>
-                    <h6>2.- Empaque cuidadosamente los libros de acuerdo con nuestras instrucciones y envíelos a la dirección proporcionada. Puede utilizar el servicio de mensajería de su elección, como correos o mensajería local.</h6>
-                    <h6>Asegúrese de proporcionar la información de seguimiento si está disponible para que podamos rastrear la entrega.</h6>
-                </div>
-                <div className="mb-4">
-                    <h3 className="m-3"><strong>Paso IV: Información sobre la Ubicación de Donación</strong></h3>
-                    <h6>1.- Una vez que hayamos recibido y procesado sus libros donados en nuestra bodega, le informaremos por correo electrónico.</h6>
-                    <h6>2.- En nuestra página web, publicaremos información sobre la ubicación y el uso de los libros donados, para que pueda ver cómo sus libros están haciendo una diferencia.</h6>
-                </div>
-                <div className="d-flex text-center pt-5 mt-5 mb-5 pb-5 border shadow-sm rounded">
-                    <h2><strong>¡Gracias por considerar donar libros a nuestra página web! Sus donaciones ayudarán a fomentar la lectura y el acceso a la literatura para otros usuarios de nuestra comunidad.</strong></h2>
-                </div>
+            <div className="col-6  py-3 pe-5">
+              <h3 className="mb-3">TAC: Taller de Acción Comunitaria</h3>
+              <p className="mb-3 fs-6">
+                El TAC es una organización comunitaria funcional que surge el
+                año 1989 en el cerro Cordillera, Valparaíso. Su modelo de
+                intervención parte de la base de la educación, capacitación
+                formal o informal, y su trabajo está dirigido a niños, jóvenes,
+                mujeres, adultos, tercera edad, vecinos, organizaciones,
+                instituciones funcionales y/o territoriales.
+              </p>
+              <p className="mb-3 fs-6">
+                Actualmente estan en proceso de establecer un nuevo espacio
+                bibliotecario y estan buscando nuestra colaboración para
+                enriquecerlo con una selección de libros destinados tanto a
+                adultos como a niños.
+              </p>
+              <ul className="my-5">
+                <li>
+                  <h6>Dirección: Cam. Cintura 3049, 2361876 Valparaíso</h6>
+                </li>
+                <li>
+                  <h6>Email: tac.cordillera@gmail.com</h6>
+                </li>
+                <li>
+                  <h6>Teléfono: (32) 259 5552</h6>
+                </li>
+                <li>
+                  <h6>https://www.instagram.com/tac.cordillera/</h6>
+                </li>
+              </ul>
+              <p className="mb-3 fs-6">
+                <strong>
+                  Para respaldar esta noble causa, simplemente utiliza los datos
+                  que se proporcionan arriba para enviar tus donaciones. Tus
+                  donativos contribuirán al fomento de la lectura y al acceso a
+                  la literatura para otros miembros de la comunidad. ¡Gracias
+                  por considerar la donación de libros!
+                </strong>
+              </p>
             </div>
+            <div className="fotoInstitution1 col-6"></div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
